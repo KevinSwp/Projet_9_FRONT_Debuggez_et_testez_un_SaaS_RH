@@ -22,13 +22,37 @@ export default class NewBill {
     this.fileName = null;
     this.billId = null;
 
+    new Logout({ document, localStorage, onNavigate })
+
     const formNewBill = this.document.querySelector('form[data-testid="form-new-bill"]');
     formNewBill.addEventListener('submit', this.handleSubmit.bind(this));
 
     const fileInput = this.document.querySelector('input[data-testid="file"]');
     fileInput.addEventListener('change', this.handleChangeFile.bind(this));
   }
+  
+  // Function upload file
+  uploadFile = async (formData, fileName) => {
+    try {
+      // Attempting to create a bill with the provided formData
+      const { fileUrl, key } = await this.store.bills().create({
+        data: formData,
+        headers: {
+          noContentType: true,
+        },
+      });
 
+      // Setting the file URL, file name, and bill ID to the instance variables after successful upload
+      this.fileUrl = fileUrl;
+      this.fileName = fileName;
+      this.billId = key;
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Function handle file
   handleChangeFile = (e) => {
     e.preventDefault();
 
@@ -52,26 +76,6 @@ export default class NewBill {
     } else {
       fileInput.value = null;
       errorInput.textContent = 'formats autorisés : .jpeg, .jpg, .png';
-    }
-  };
-
-  uploadFile = async (formData, fileName) => {
-    try {
-      // Attempting to create a bill with the provided formData
-      const { fileUrl, key } = await this.store.bills().create({
-        data: formData,
-        headers: {
-          noContentType: true,
-        },
-      });
-
-      // Setting the file URL, file name, and bill ID to the instance variables after successful upload
-      this.fileUrl = fileUrl;
-      this.fileName = fileName;
-      this.billId = key;
-
-    } catch (error) {
-      console.error(error);
     }
   };
 

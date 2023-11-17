@@ -50,7 +50,7 @@ export default ({ data: bills, loading, error }) => {
   
   return (`
     <div class='layout'>
-      ${VerticalLayout(120)}
+      ${VerticalLayout(180)}
       <div class='content'>
         <div class='content-header'>
           <div class='content-title'> Mes notes de frais </div>
