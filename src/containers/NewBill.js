@@ -6,7 +6,7 @@ import Logout from './Logout.js';
  * @param {string} filename name + extension of file added by user
  * @returns true if the extension is .jpg, .jpeg, .png else return false
  */
-const checkFileExtension = function (filename) {
+export const checkFileExtension = function (filename) {
   const extensionFile = filename.split('.').pop();
   const allowedExtensions = ['jpeg', 'jpg', 'png'];
   return allowedExtensions.includes(extensionFile.toLowerCase());
