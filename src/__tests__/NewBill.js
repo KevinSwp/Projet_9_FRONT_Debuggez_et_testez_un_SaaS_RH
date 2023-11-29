@@ -140,7 +140,7 @@ describe('Given I am connected as an employee', () => {
   describe('Given I am connected as an employee', () => {
     describe('When I submit a new bill', () => {
       // Test for successful POST request
-      test('fetches bills from mock API POST', async () => {
+      test('Then fetches bills from mock API POST', async () => {
         // Mocks the POST function of the store and tracks its calls
         const postSpy = jest.spyOn(mockStore, 'bills');
         const billIsCreated = await postSpy().update();
@@ -179,12 +179,12 @@ describe('Given I am connected as an employee', () => {
       };
 
       // Test for handling a 404 error from the API
-      test('fetches bills from mock API POST and fails with 404 message error', async () => {
+      test('Then fetches bills from mock API POST and fails with 404 message error', async () => {
         await setupNewBillTest(404); // Calls the setup function with a 404 error code
       });
 
       // Test for handling a 500 error from the API
-      test('fetches bills from mock API POST and fails with 500 message error', async () => {
+      test('Then fetches bills from mock API POST and fails with 500 message error', async () => {
         await setupNewBillTest(500); // Calls the setup function with a 500 error code
       });
     });

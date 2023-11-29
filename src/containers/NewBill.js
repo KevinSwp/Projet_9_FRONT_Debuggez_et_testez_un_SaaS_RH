@@ -6,7 +6,7 @@ import Logout from './Logout.js';
  * @param {string} filename name + extension of file added by user
  * @returns true if the extension is .jpg, .jpeg, .png else return false
  */
-export const checkFileExtension = function (filename) {
+const checkFileExtension = function (filename) {
   const extensionFile = filename.split('.').pop();
   const allowedExtensions = ['jpeg', 'jpg', 'png'];
   return allowedExtensions.includes(extensionFile.toLowerCase());
@@ -22,6 +22,7 @@ export default class NewBill {
     this.fileName = null;
     this.billId = null;
 
+    // Logout
     new Logout({ document, localStorage, onNavigate })
 
     const formNewBill = this.document.querySelector('form[data-testid="form-new-bill"]');

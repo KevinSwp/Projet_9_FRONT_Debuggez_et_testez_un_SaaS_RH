@@ -13,7 +13,7 @@ import router from '../app/Router.js';
 import Bills from '../containers/Bills.js';
 import mockStore from '../__mocks__/store.js';
 
-// Function to sort dates in ascending order
+// Function to sort dates in descending order
 function sortDates(dates) {
   return dates.sort((a, b) => new Date(a) - new Date(b));
 }
@@ -61,7 +61,7 @@ describe('Given I am connected as an employee', () => {
 
     describe('When I click on the icon eye', () => {
       // Test display modal on clicked eye icon
-      test('A modal should open', () => {
+      test('Then a modal should open', () => {
         // Sets up the HTML structure and mocks navigation
         document.body.innerHTML = BillsUI({ data: bills });
         const onNavigate = (pathname) => { document.body.innerHTML = ROUTES({ pathname }) };
@@ -89,7 +89,7 @@ describe('Given I am connected as an employee', () => {
 
     describe('When I click on the new bill button', () => {
       // Test redirect to the new bill page on clicked button "new bill"
-      test('I should be redirect on the page new bill', () => {
+      test('Then I should be redirect on the page new bill', () => {
         // Mocking localStorage on the window object and setting a user item to simulate an authenticated user
         Object.defineProperty(window, 'localStorage', { value: localStorageMock });
         window.localStorage.setItem('user', JSON.stringify({ type: 'Employee' }));
@@ -138,7 +138,7 @@ describe('Given I am connected as an employee', () => {
 
     describe('When I navigate on the bills page', () => {
       // Test checks if the application correctly fetches bills from a mock API using a GET request
-      test('fetches bills from mock API GET', async () => {
+      test('Then fetches bills from mock API GET', async () => {
         // Setting up the environment for the test
         // Simulate the environment
         const root = setupLocalStorageAndRootDiv();
@@ -201,12 +201,12 @@ describe('Given I am connected as an employee', () => {
       };
 
       // Test to check if the application correctly handles a 404 error from the API
-      test('fetches bills from an API and fails with 404 message error', async () => {
+      test('Then fetches bills from an API and fails with 404 message error', async () => {
         await testAPIError(404);
       });
 
       // Test to check if the application correctly handles a 500 error from the API
-      test('fetches messages from an API and fails with 500 message error', async () => {
+      test('Then fetches messages from an API and fails with 500 message error', async () => {
         await testAPIError(500);
       });
     });
