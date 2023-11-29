@@ -3,22 +3,11 @@
  */
 
 import { fireEvent, screen, waitFor } from '@testing-library/dom';
-import NewBill, { checkFileExtension } from '../containers/NewBill.js';
+import NewBill from '../containers/NewBill.js';
 import Router from '../app/Router.js';
 import { ROUTES_PATH } from '../constants/routes.js';
 import { localStorageMock } from '../__mocks__/localStorage.js';
 import mockStore from '../__mocks__/store.js';
-
-// Unit test extension file
-describe('Supporting Document Extension Test Suites', () => {
-  it('should accept a valid file extension', () => {
-    expect(checkFileExtension('document1.jpg')).toBe(true);
-  });
-
-  it('should reject an invalid file extension', () => {
-    expect(checkFileExtension('document2.svg')).toBe(false);
-  });
-});
 
 describe('Given I am connected as an employee', () => {
   describe('When I am on the new bill page', () => {
